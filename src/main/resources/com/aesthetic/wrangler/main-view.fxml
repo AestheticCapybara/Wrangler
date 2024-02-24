@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+          prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.aesthetic.wrangler.controllers.MainController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="700.0" minWidth="700.0" prefWidth="700.0"/>
+        <ColumnConstraints hgrow="NEVER"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER"/>
+        <RowConstraints maxHeight="430.0" minHeight="430.0" prefHeight="430.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="200.0" vgrow="NEVER"/>
+    </rowConstraints>
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label fx:id="filePath" text="filePath"/>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+        <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <top>
+                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Hash Type"/>
+                        <ChoiceBox fx:id="hashList" prefWidth="150.0"/>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Encryption Type" style="-fx-padding: 25 0 0 0"/>
+                        <ChoiceBox fx:id="encryptionList" prefWidth="150.0"/>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Mode" style="-fx-padding: 5 0 0 0"/>
+                        <ChoiceBox fx:id="modeList" prefWidth="150.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </VBox>
+            </top>
+            <bottom>
+                <VBox maxHeight="75.0" prefHeight="75.0" prefWidth="180.0" BorderPane.alignment="CENTER" style="-fx-padding: 5">
+                    <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Password" style="-fx-padding: 10 0 0 0"/>
+                        <TextField fx:id="passwordField"/>
+                    </children>
+                </VBox>
+            </bottom>
+        </BorderPane>
+        <BorderPane GridPane.rowIndex="2">
+            <center>
+                <FlowPane/>
+            </center>
+            <right>
+                <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onClearFilesButtonClick"
+                        text="Clear files" BorderPane.alignment="CENTER"/>
+            </right>
+            <left>
+                <Button mnemonicParsing="false" onAction="#onSelectPathButtonClick" text="Select files..."
+                        BorderPane.alignment="CENTER"/>
+            </left>
+        </BorderPane>
+        <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onEncryptButtonClick" text="Encrypt">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#onDecryptButtonClick" text="Decrypt">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+        <TitledPane collapsible="false" text="Selected files" GridPane.rowIndex="1">
+            <content>
+                <ListView fx:id="fileList" prefHeight="497.0" prefWidth="706.0"/>
+            </content>
+        </TitledPane>
+        <TextArea fx:id="logArea" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS"/>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+</GridPane>
